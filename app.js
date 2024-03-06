@@ -34,6 +34,11 @@ const db = mysql.createConnection({
 })
 
 
+app.use((req, res, next) => {
+  console.log("Current URL:", req.url);
+  next();
+});
+
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
@@ -51,6 +56,6 @@ app.use("/", require('./routes/router'));
 
 app.use("/auth", require('./routes/auth'))
 
-app.listen(8080, function () {
+app.listen(3000, function () {
     console.log("Hey i am runing in 3000");
 })
